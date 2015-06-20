@@ -1,0 +1,20 @@
+<%= render 'layouts/header' %>
+
+<h2> My Account </h2>
+
+Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+
+  <% if @user.id == session[:user_id]%>
+    <%= link_to "Update Your Profile", edit_user_path(@user) %>
+    <%= link_to "Delete Your Profile", user_path(@user), method: :delete, :class => :destroy %>
+  <% end %>
+
+<h3> Surveys I Created</h3>
+
+<% @user.surveys.each do |item| %>
+<%= item.name %>
+<% end %>
+
+<h3> Surveys I've Taken</h3>
+
