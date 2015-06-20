@@ -8,7 +8,8 @@
 
 
 survey = Survey.create(name: "survey 1", url: "www.survey1.com")
-user = User.create(name: "john", email: "john@gmail.com", password_digest: "123")
+user = User.create(name: "john", email: "john@gmail.com", password: "123")
+taker = User.create(name: "bob", email: "bob@gmail.com", password: "123")
 question = Question.create(body: "What's your fav scary movie?")
 answer = Answer.create(body: "finding nemo")
 answer2 = Answer.create(body: "cars")
@@ -40,7 +41,7 @@ user.surveys << survey
 survey_answer = SurveyAnswer.create(survey_id: 1, answer_id: 1, user_id: 1)
 survey_answer2 = SurveyAnswer.create(survey_id: 1, answer_id: 2, user_id: 1)
 survey_answer3 = SurveyAnswer.create(survey_id: 1, answer_id: 4, user_id: 1)
-survey_answer4 = SurveyAnswer.create(survey_id: 1, answer_id: 6, user_id: 1)
-survey_answer5 = SurveyAnswer.create(survey_id: 1, answer_id: 7, user_id: 1)
+survey_answer4 = SurveyAnswer.create(survey_id: 1, answer_id: 6, user_id: 2)
+survey_answer5 = SurveyAnswer.create(survey_id: 1, answer_id: 7, user_id: 2)
 
 
