@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+
 survey = Survey.create(name: "survey 1", url: "www.survey1.com")
 user = User.create(name: "john", email: "john@gmail.com", password: "123")
 taker = User.create(name: "bob", email: "bob@gmail.com", password: "123")
+
 question = Question.create(body: "What's your fav scary movie?")
 answer = Answer.create(body: "finding nemo")
 answer2 = Answer.create(body: "cars")
@@ -22,14 +24,11 @@ answer6 = Answer.create(body: "married with children")
 answer7 = Answer.create(body: "king of the hill")
 answer8 = Answer.create(body: "clarissa explains it all")
 
-
-
 survey.questions << question
 question.answers << answer
 question.answers << answer2
 question.answers << answer3
 question.answers << answer4
-
 
 survey.questions << question2
 question2.answers << answer5

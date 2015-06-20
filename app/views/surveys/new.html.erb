@@ -1,0 +1,9 @@
+<h1>Make a title for you survey:</h1>
+
+<%= form_for @survey do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, :value => session[:user_id]  %>
+  <%= f.submit "Create Survey" %>
+<% end %>
+
