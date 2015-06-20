@@ -8,19 +8,24 @@ class UsersController < ActionController::Base
     else
       redirect_to root_path
     end
+  end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def user_submissions
-    @user = User.find(params[:user_id])
-  end
-
-  def user_comments
-    @user = User.find(params[:user_id])
   end
 
   def new
@@ -30,6 +35,12 @@ class UsersController < ActionController::Base
 
   def user_params
     params.require(:user).permit(:name,:email,:password)
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
 
 end
