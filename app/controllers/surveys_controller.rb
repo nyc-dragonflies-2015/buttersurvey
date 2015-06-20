@@ -14,6 +14,12 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(params[:survey][:name])
+    secret_url = SecureRandom.hex(4)
+    @survey = Survey.new(name: params[:survey][:name], creator_id: session[:user_id], url: secret_url)
+    if @survey.save
+      redirect_to new_survey_question_path(@survey.id)
+    else
+      render text: "something went wrong"
+    end
   end
 end
