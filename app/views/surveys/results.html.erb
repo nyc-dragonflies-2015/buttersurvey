@@ -2,8 +2,7 @@
 
 <% @questions.each do |question| %>
   <h3><li><%= question.body %></li></h3>
-  <li><% question.answers.each do |answer| %></li>
-    <li><%= answer.body %></li>
-    <li><%= answer.survey_answers.count %></li>
+  <% question.answers.each do |answer| %>
+    <li><%= answer.body %>:  <%= answer_count(answer) %></li>
   <% end %>
 <% end %>
