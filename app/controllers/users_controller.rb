@@ -37,4 +37,10 @@ class UsersController < ActionController::Base
     params.require(:user).permit(:name,:email,:password)
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+  end
+
 end
