@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<%=form_for :user, url: create_session_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+  <%= f.label :password %>
+  <%= f.password_field :password_digest %> <br>
+  <%= f.submit %>
+  <% end %>
+
+<%=link_to "Forgot your password?"%>
+
+<%= render partial: 'users/new', locals: { user: @user} %>
