@@ -19,7 +19,7 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to new_survey_question_path(@survey.id)
     else
-      render text: "something went wrong"
+      flash[:notice] = "you must enter a title"
     end
   end
 end

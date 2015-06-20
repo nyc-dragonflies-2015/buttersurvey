@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  resources :questions do
+    resources :answers
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create', as: 'create_session'
   delete '/logout' => 'sessions#destroy', as: 'logout'

@@ -1,6 +1,6 @@
 <h1>Write in a new question</h1>
 
-<%= form_for @question, url: survey_questions_path(@survey.id) do |f| %>
+<%= form_for @question, url: survey_questions_path(@survey.id), method: :post do |f| %>
   <%= f.label :Question %>
   <%= f.text_field :body %>
   <%= f.submit "Create Question" %>
