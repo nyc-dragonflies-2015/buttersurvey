@@ -3,4 +3,14 @@ class QuestionsController < ApplicationController
     @survey = Survey.find_by(id: params[:survey_id])
     @question = Question.new
   end
+
+  def create
+    @question = Question.new(body: params[:question][:body], survey_id: params[:survey_id])
+    if @question.save
+      redirect_to new_question_answer_path(params[:survey_id])
+    else
+      flash[:notice] = "you must enter a body"
+      redirect_to new_survey_question_path(params[:survey_id])
+    end
+  end
 end

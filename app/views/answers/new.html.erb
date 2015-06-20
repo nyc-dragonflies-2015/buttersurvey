@@ -1,0 +1,13 @@
+<h1>This Form is to fill out the answers to a question</h1>
+<%= form_tag("/questions/#{params[:question_id]}/answers", method: :post) do %>
+  <%= label_tag "Choice 1: " %>
+  <%= text_field_tag :body %> <br> <br>
+  <%= label_tag "Choice 2: " %>
+  <%= text_field_tag :body %> <br> <br>
+  <%= label_tag "Choice 3: " %>
+  <%= text_field_tag :body %> <br> <br>
+  <%= label_tag "Choice 4: " %>
+  <%= text_field_tag :body %> <br> <br>
+  <%= submit_tag "work" %>
+<% end %>
+
