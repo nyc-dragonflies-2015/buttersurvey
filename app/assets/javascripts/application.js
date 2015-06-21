@@ -16,8 +16,49 @@
 $(document).ready(function(event){
   $('#login-button').on('click', login_show);
   $('#create-account-button').on('click', create_account_show);
+  $('.create-survey').on('submit', surveyCreationEvent);
+  $('#new_question').on('submit', questionCreationEvent);
 });
 
+var surveyCreationEvent = (function(event) {
+  event.preventDefault();
+  // var test = $(event.target)
+  $.ajax({
+    url: '/surveys',
+    method: 'POST',
+    data: $('form').serialize()
+   }).done(function(response) {
+      $.ajax({
+        url: '/surveys/' + response.id + '/questions/new',
+        method: 'GET'
+      }).done(function(response){
+        event.preventDefault();
+        $('.create-questions').append(response);
+        $('.create-questions').show();
+        $('.create-survey').hide();
+      }).fail(function(error){
+        console.log(error)
+      })
+    }).fail(function(error) {
+      console.log("chicken");
+    })
+});
+
+var questionCreationEvent = (function(event) {
+  event.preventDefault();
+  debugger
+  $.ajax({
+        url: '/surveys/' + '15' + '/answers/new',
+        method: 'GET'
+      }).done(function(response){
+        $('.create-answers').append(response);
+        $('.create-answers').show();
+        $('.create-questions').hide();
+        // console.log($(survey)
+      }).fail(function(error){
+        console.log(error)
+      })
+});
 
 var login_show = (function(){
   $('#login-form').toggle();
@@ -26,3 +67,4 @@ var login_show = (function(){
 var create_account_show = (function() {
   $("#create-account-form").toggle();
 });
+

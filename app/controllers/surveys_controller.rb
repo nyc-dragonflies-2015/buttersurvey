@@ -17,12 +17,21 @@ class SurveysController < ApplicationController
     secret_url = SecureRandom.hex(4)
     @survey = Survey.new(name: params[:survey][:name], creator_id: session[:user_id], url: secret_url)
     if @survey.save
-      redirect_to new_survey_question_path(@survey.id)
+      # @id = @survey.id.to_json
+      render :json => { :id => @survey.id }
+      # render :text => @id.to_json
+      # redirect_to new_survey_question_path(@survey.id)
     else
       flash[:notice] = "you must enter a title"
       redirect_to :back
     end
   end
+
+  def object
+    session[:survey_id]
+  end
+
+
 
   def show
     @survey = Survey.find_by(id: params[:id])

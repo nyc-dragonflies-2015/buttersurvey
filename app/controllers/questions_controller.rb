@@ -7,7 +7,9 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(body: params[:question][:body], survey_id: params[:survey_id])
     if @question.save
-      redirect_to new_question_answer_path(params[:survey_id])
+
+      render :json => { :id => @question.id }
+
     else
       flash[:notice] = "you must enter a body"
       redirect_to new_survey_question_path(params[:survey_id])

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  get '/survey-object' => 'surveys#object'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create', as: 'create_session'
   delete '/logout' => 'sessions#destroy', as: 'logout'

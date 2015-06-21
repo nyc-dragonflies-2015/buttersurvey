@@ -20,3 +20,11 @@
 #create-account-form {
   display: none;
 }
+
+.create-questions {
+  display: none;
+}
+
+.create-answers {
+  display: none;
+}

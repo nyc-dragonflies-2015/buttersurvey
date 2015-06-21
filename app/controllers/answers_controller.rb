@@ -1,6 +1,11 @@
 class AnswersController < ApplicationController
 
   def new
+    @survey = Survey.last
+    @question = Question.last
+
+    # render :json => { :id => @survey.id }
+
   end
 
   def create
