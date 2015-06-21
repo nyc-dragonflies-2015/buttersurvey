@@ -1,0 +1,12 @@
+<h1>Index Page for surveys</h1>
+
+<% @surveys.each do |s| %>
+  <%= s.name %> <br>
+  <%= s.url %> <br>
+<% end %>
+<br><br>
+<% if session[:user_id] %>
+  <%= link_to "Make a new survey", new_survey_path%>
+  <%= link_to "Update your survey" %>
+
+<% end %>

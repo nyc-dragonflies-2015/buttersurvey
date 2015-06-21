@@ -1,0 +1,12 @@
+<h1>Make a title for you survey:</h1>
+
+<%= form_for @survey do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create Survey" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
