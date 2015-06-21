@@ -28,5 +28,4 @@ class SurveysController < ApplicationController
     @survey = Survey.find_by(id: params[:id])
     @questions = @survey.questions
   end
-
 end
