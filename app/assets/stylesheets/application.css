@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+#login-form {
+  display: none;
+}
+
+#create-account-form {
+  display: none;
+}

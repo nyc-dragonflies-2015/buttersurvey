@@ -1,13 +1,17 @@
+
 <%= render 'layouts/header' %>
 
-<h2>Login</h2>
-<%=form_for :user, url: create_session_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-  <%= f.label :password %>
-  <%= f.password_field :password_digest %> <br>
-  <%= f.submit %>
+<div id="login-button">
+  <h2>Login</h2>
+</div>
+<div id="login-form" style="display: hidden;">
+  <%=form_for :user, url: create_session_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
+    <%= f.label :password %>
+    <%= f.password_field :password_digest %> <br>
+    <%= f.submit %>
   <% end %>
-
+</div>
 
 <%= render partial: 'users/new', locals: { user: @user} %>

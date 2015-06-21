@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(event){
+  $('#login-button').on('click', login_show);
+  $('#create-account-button').on('click', create_account_show);
+});
+
+
+var login_show = (function(){
+  $('#login-form').toggle();
+});
+
+var create_account_show = (function() {
+  $("#create-account-form").toggle();
+});
