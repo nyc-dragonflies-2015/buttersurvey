@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(event){
+  $('#login-button').on('click', login_show);
+});
+
+
+var login_show = (function(event){
+  console.log('hi');
+  $('#login-form').toggle();
+});
