@@ -6,8 +6,7 @@ Name: <%= @user.name %><br>
 Email: <%= @user.email %><br>
 
   <% if @user.id == session[:user_id]%>
-    <%= link_to "Update Your Profile", edit_user_path(@user) %>
-    <%= link_to "Delete Your Profile", user_path(@user), method: :delete %>
+    <%= link_to "Manage Your Account", edit_user_path(@user) %>
   <% end %>
 
 <h3> Surveys I Created</h3>

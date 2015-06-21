@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 
-<h1>Update Your Profile</h1>
+<h1>Manage Your Account</h1>
 
 <%=form_for :user, url: user_path(@user), method:  :patch do|f| %>
   <%= f.label :name %>
@@ -10,4 +10,9 @@
   <%= f.label :password %>
   <%= f.password_field :password %> <br>
   <%= f.submit %>
+
   <% end %>
+
+  <%= link_to 'Delete My Account', user_path(@user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
