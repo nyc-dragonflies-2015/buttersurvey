@@ -11,12 +11,8 @@ class SessionsController < ApplicationController
     user = User.find_by(name: user_params[:name])
      user.password == params[:password]
       session[:user_id] = user.id
-      @current_user = User.find(user.id)
       redirect_to root_path
     end
-  end
-
-  def current_user
   end
 
   def destroy
