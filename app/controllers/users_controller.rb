@@ -4,9 +4,11 @@ class UsersController < ActionController::Base
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:notice] = "Account successfully created"
       redirect_to root_path
     else
-      redirect_to root_path
+      flash[:notice] = "User already exists"
+      redirect_to login_path
     end
   end
 
@@ -40,6 +42,7 @@ class UsersController < ActionController::Base
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    flash[:notice] = "Account has been deleted"
     redirect_to root_path
   end
 

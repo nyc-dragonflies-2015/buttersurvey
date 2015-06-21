@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-
+    if User.find_by(name: user_params[:name]) == nil
+      flash[:notice] = "Invalid Username or Password"
+      redirect_to login_path
+    else
     user = User.find_by(name: user_params[:name])
-    if user.password == params[:password]
+     user.password == params[:password]
       session[:user_id] = user.id
       @current_user = User.find(user.id)
-      redirect_to root_path
-    else
       redirect_to root_path
     end
   end
