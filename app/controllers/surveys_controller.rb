@@ -23,4 +23,9 @@ class SurveysController < ApplicationController
       redirect_to :back
     end
   end
+
+  def show
+    @survey = Survey.find_by(id: params[:id])
+    @questions = @survey.questions
+  end
 end
