@@ -20,6 +20,7 @@ class SurveysController < ApplicationController
       redirect_to new_survey_question_path(@survey.id)
     else
       flash[:notice] = "you must enter a title"
+      redirect_to :back
     end
   end
 end
