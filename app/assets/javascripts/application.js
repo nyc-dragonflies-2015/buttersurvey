@@ -18,6 +18,7 @@ $(document).ready(function(event){
   $('#create-account-button').on('click', create_account_show);
   $('.create-survey').on('submit', surveyCreationEvent);
   $('#new_question').on('submit', questionCreationEvent);
+  $('.create-options').on('submit', questionCreationEvent);
 });
 
 var surveyCreationEvent = (function(event) {
@@ -46,15 +47,15 @@ var surveyCreationEvent = (function(event) {
 
 var questionCreationEvent = (function(event) {
   event.preventDefault();
-  debugger
+  var surveyId = $('input:hidden[name=survey_id]').val()
   $.ajax({
-        url: '/surveys/' + '15' + '/answers/new',
+        url: '/surveys/' + surveyId + '/answers/new',
         method: 'GET'
       }).done(function(response){
-        $('.create-answers').append(response);
-        $('.create-answers').show();
+        // event.preventDefault();
+        $('.innerfirst').replaceWith(response);
+        $('.create-options').show();
         $('.create-questions').hide();
-        // console.log($(survey)
       }).fail(function(error){
         console.log(error)
       })

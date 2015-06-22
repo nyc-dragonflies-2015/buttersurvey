@@ -1,3 +1,4 @@
+<div class = "create-answers">
 <h1>This Form is to fill out the answers to a question</h1>
 <%= form_tag("/questions/#{@question.id}/answers", method: :post) do %>
   <%= label_tag "Choice 1: " %>
@@ -12,6 +13,7 @@
   <%= submit_tag "work" %>
 <% end %>
 <br>
+</div>
 <% if flash[:notice] == "problem" %>
   <p>You must fill out all forms.</p>
 <% end %>
