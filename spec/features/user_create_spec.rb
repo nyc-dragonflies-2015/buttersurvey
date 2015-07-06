@@ -27,6 +27,29 @@ describe "sign up" do
 end
 
 
+describe "login" do
+  let!(:user) {User.create(name: "ben", email: "ben@example.com", password: "123") }
+  it "should let you log in" do
+    visit login_path
+    within("#login-form") do
+      fill_in 'Name', :with => user.name
+      fill_in 'user_password_digest', :with => user.password
+    end
+    click_button 'Save User'
+  end
+end
+
+describe "create survey" do
+  it "should create a new survey" do
+    visit new_survey_path
+    within("#new_survey") do
+      fill_in 'survey_name', :with => 'test survey'
+    end
+    click_button "Create Survey"
+    expect(Survey.last.name).to eq('test survey')
+  end
+end
+
 
 # describe "create user" do
 #   let!(:user) {User.create(name: "ben", email: "ben@example.com", password: "123") }
