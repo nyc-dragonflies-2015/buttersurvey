@@ -28,3 +28,28 @@ feature "create account" do
     expect(page).to have_content "User already exists"
   end
 end
+
+feature "login" do
+  given!(:user) {User.create(name: "bananas", email: "bananas@example.com", password: "123")}
+  it "should allow a registered user to login" do
+    visit '/login'
+    within("#login-form") do
+      fill_in 'Name', with: user.name
+      fill_in 'user_password_digest', with: user.password
+    end
+    click_button 'Save User'
+    expect(page).to have_content "#{user.name} logout"
+  end
+
+  it "should not login a user that does not exist" do
+    visit '/login'
+    within("#login-form") do
+      fill_in 'Name', with: nil
+      fill_in 'user_password_digest', with: nil
+    end
+    click_button 'Save User'
+    expect(page).to have_content "Invalid Username or Password"
+  end
+end
+
+
