@@ -48,6 +48,16 @@ describe "create survey" do
     click_button "Create Survey"
     expect(Survey.last.name).to eq('test survey')
   end
+
+  let!(:survey) {Survey.create(name: "test")}
+  it "should add a question" do
+    visit new_survey_question_path(survey.id)
+    within("#new_question") do
+      fill_in 'question_body', :with => 'new test question'
+    end
+    click_button "Create Question"
+    expect(Survey.last.questions.last.body).to eq('new test question')
+  end
 end
 
 
