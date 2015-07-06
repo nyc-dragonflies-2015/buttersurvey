@@ -52,4 +52,32 @@ feature "login" do
   end
 end
 
+feature "user profile" do
+  given!(:user) {User.create(name: "bananas", email: "bananas@example.com", password: "123")}
+  it "should allow a logged in user to view their profile" do
+    visit '/login'
+    within("#login-form") do
+      fill_in 'Name', with: user.name
+      fill_in 'user_password_digest', with: user.password
+    end
+    click_button 'Save User'
+    click_link "#{user.name}"
+    expect(page).to have_content "My Account"
+  end
+end
+
+feature "logout" do
+  given!(:user) {User.create(name: "bananas", email: "bananas@example.com", password: "123")}
+  it "should allow a logged in user to logout" do
+    visit '/login'
+    within("#login-form") do
+      fill_in 'Name', with: user.name
+      fill_in 'user_password_digest', with: user.password
+    end
+    click_button 'Save User'
+    click_link "logout"
+    expect(page).to have_content "login"
+  end
+end
+
 
