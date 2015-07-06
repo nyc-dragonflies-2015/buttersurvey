@@ -35,7 +35,7 @@ feature "login" do
     visit '/login'
     within("#login-form") do
       fill_in 'Name', with: user.name
-      fill_in 'user_password_digest', with: user.password
+      fill_in 'Password', with: user.password
     end
     click_button 'Save User'
     expect(page).to have_content "#{user.name} logout"
@@ -45,7 +45,7 @@ feature "login" do
     visit '/login'
     within("#login-form") do
       fill_in 'Name', with: nil
-      fill_in 'user_password_digest', with: nil
+      fill_in 'Password', with: nil
     end
     click_button 'Save User'
     expect(page).to have_content "Invalid Username or Password"
@@ -58,7 +58,7 @@ feature "user profile" do
     visit '/login'
     within("#login-form") do
       fill_in 'Name', with: user.name
-      fill_in 'user_password_digest', with: user.password
+      fill_in 'Password', with: user.password
     end
     click_button 'Save User'
     click_link "#{user.name}"
@@ -72,7 +72,7 @@ feature "logout" do
     visit '/login'
     within("#login-form") do
       fill_in 'Name', with: user.name
-      fill_in 'user_password_digest', with: user.password
+      fill_in 'Password', with: user.password
     end
     click_button 'Save User'
     click_link "logout"
