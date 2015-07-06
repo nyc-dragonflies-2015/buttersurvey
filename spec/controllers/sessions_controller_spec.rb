@@ -18,6 +18,14 @@ describe SessionsController do
       post :create, {user: {name: nil, password: nil} }
       expect(response).to redirect_to login_path
     end
+    it "should assign the user a session id" do
+      post :create, {user: {name: user.name, password: user.password}}
+      expect(session[:user_id]).to eq(user.id)
+    end
+    it "should log a user out (session id is nil)" do
+      post :destroy
+      expect(session[:user_id]).to eq(nil)
+    end
   end
 
 end
