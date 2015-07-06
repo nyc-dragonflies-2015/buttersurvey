@@ -7,7 +7,7 @@ feature "create survey" do
     visit '/login'
     within("#login-form") do
       fill_in 'Name', with: user.name
-      fill_in 'user_password_digest', with: user.password
+      fill_in 'Password', with: user.password
     end
     click_button 'Save User'
     click_link "#{user.name}"
