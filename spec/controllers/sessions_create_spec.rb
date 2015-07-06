@@ -30,7 +30,33 @@ describe SessionsController do
 
 end
 
+describe SurveysController do
 
+  it 'should have a SurveysController' do
+    expect(SurveysController).to_not be_nil
+  end
+
+  describe "new survey" do
+    it "should render the new survey form" do
+      get :new
+      expect(response).to render_template :new
+    end
+  end
+
+  describe "creating new survey" do
+    it "should create a new survey" do
+      post :create, survey: {name: "julia survey"}
+      expect(Survey.last.name).to eq "julia survey"
+    end
+  end
+
+  describe "creating new survey" do
+    it "should create a new survey" do
+      post :create, survey: {name: nil}
+      expect(flash[:notice]).to be_present
+    end
+  end
+end
 
 
 
