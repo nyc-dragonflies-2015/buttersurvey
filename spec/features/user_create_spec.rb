@@ -6,4 +6,11 @@ describe "UserController" do
   end
 end
 
+describe "welcome page" do
+  it "should include welcome message" do
+    visit root_path
+    expect(page).to have_content "WELCOME TO BUTTER SURVEYS"
+  end
+end
+
 
